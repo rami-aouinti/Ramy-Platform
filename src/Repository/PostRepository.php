@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,43 +21,18 @@ class PostRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array
+     * @param int $page
+     * @param int $limit
+     * @return Paginator
      */
-    public function getAllPosts(): array
+    public function getPaginatedPosts(int $page, int $limit): Paginator
     {
-        return $this->createQueryBuilder('p')
-            ->addSelect('c')
-            ->join('p.comments', 'c')
-            ->getQuery()
-            ->getResult();
+        return new Paginator(
+            $this->createQueryBuilder("p")
+                ->addSelect("c")
+                ->join("p.comments", "c")
+                ->setMaxResults($limit)
+                ->setFirstResult(($page - 1) * $limit)
+        );
     }
-
-    // /**
-    //  * @return Post[] Returns an array of Post objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('p.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Post
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }
