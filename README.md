@@ -3,8 +3,8 @@
 
 ---------------------
 
-Pré-requis :
-* PHP 7.4
+Prerequisite :
+* PHP 8.0
 * MySQL
 
 Installation
