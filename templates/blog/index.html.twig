@@ -3,7 +3,7 @@
 {% block body %}
     <div class="row">
         <div class="col-12 mb-4">
-            <h1>Blog</h1>
+            <h1>Posts</h1>
         </div>
         {% for post in posts %}
             <div class="col-4 mb-3">
@@ -11,13 +11,13 @@
                     <div class="card-header">{{ post.title }}</div>
                     <img class="card-img-top" src="{{ asset(post.image) }}" alt="{{ post.title }}">
                     <div class="card-body d-flex justify-content-between flex-column">
-                        <small class="text-muted">Publié le {{ post.publishedAt|date("d/m/Y") }} par {{ post.user.pseudo }}</small>
-                        <small class="text-muted">{{ post.comments|length }} commentaire(s)</small>
+                        <small class="text-muted">Published At {{ post.publishedAt|date("d/m/Y") }} par {{ post.user.pseudo }}</small>
+                        <small class="text-muted">{{ post.comments|length }} comments</small>
                     </div>
                     <div class="card-footer d-flex justify-content-between">
-                        <a href="{{ path("blog_read", { id: post.id }) }}">Lire la suite</a>
+                        <a href="{{ path("blog_read", { id: post.id }) }}">Read more</a>
                         {% if is_granted('edit', post) %}
-                            <a href="{{ path("blog_update", { id: post.id }) }}">Modifier</a>
+                            <a href="{{ path("blog_update", { id: post.id }) }}">Update</a>
                         {% endif %}
                     </div>
                 </div>
@@ -29,19 +29,19 @@
                 <ul class="pagination">
 
                     {% if page > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: 1 }) }}">Première page</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: 1 }) }}">First page</a></li>
                     {% endif %}
                     {% if page > 1 %}
-                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: page - 1 }) }}">Précédent</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: page - 1 }) }}"> < </a></li>
                     {% endif %}
                     {% for p in range %}
                         <li class="page-item {{ page == p  ? "active" : "" }}"><a class="page-link" href="{{ path("index", { page: p }) }}">{{ p }}</a></li>
                     {% endfor %}
                     {% if page < pages %}
-                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: page + 1 }) }}">Suivant</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: page + 1 }) }}"> > </a></li>
                     {% endif %}
                     {% if page < pages %}
-                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: pages }) }}">Première page</a></li>
+                        <li class="page-item"><a class="page-link" href="{{ path("index", { page: pages }) }}">Last page</a></li>
                     {% endif %}
                 </ul>
             </nav>

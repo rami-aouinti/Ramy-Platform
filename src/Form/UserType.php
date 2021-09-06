@@ -32,19 +32,19 @@ class UserType extends AbstractType
                 'type' => PasswordType::class,
                 'mapped' => false,
                 'first_options' => [
-                    'label' => 'Mot de passe :'
+                    'label' => 'Password :'
                 ],
                 'second_options' => [
-                    'label' => 'Confirmez votre mot de passe :'
+                    'label' => 'Confirm Password:'
                 ],
-                'invalid_message' => 'La confirmation n\'est pas similaire au mot de passe.',
+                'invalid_message' => 'Confirmation is not similar to password.',
                 'constraints' => [
                     new NotBlank(),
                     new Length(['min' => 8])
                 ]
             ])
             ->add('pseudo', TextType::class, [
-                'label' => 'Pseudo :'
+                'label' => 'Username :'
             ])
         ;
     }

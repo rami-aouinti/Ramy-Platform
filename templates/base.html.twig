@@ -3,35 +3,32 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{% block title %}Blog{% endblock %}</title>
+    <title>{% block title %}Ramy Platform{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     {% endblock %}
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Blog</a>
+    <a class="navbar-brand" href="{{ path('index') }}">Ramy Platform</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path("index") }}">Home</a>
-            </li>
             {% if is_granted("ROLE_USER") %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path("blog_create") }}">Publier un article</a>
+                    <a class="nav-link" href="{{ path("blog_create") }}">Add post</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path("security_logout") }}">Se déconnecter</a>
+                    <a class="nav-link" href="{{ path("security_logout") }}">Logout</a>
                 </li>
             {% else %}
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path("security_login") }}">Se connecter</a>
+                    <a class="nav-link" href="{{ path("security_login") }}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ path("registration") }}">S'inscrire</a>
+                    <a class="nav-link" href="{{ path("registration") }}">Register</a>
                 </li>
             {% endif %}
         </ul>
