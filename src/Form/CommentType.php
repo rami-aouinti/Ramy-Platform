@@ -10,13 +10,13 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class Comment Type
+ * Class CommentType
+ * @package App\Form
  */
 class CommentType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * @inheritDoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -24,17 +24,17 @@ class CommentType extends AbstractType
             ->add("author", TextType::class, [
                 "label" => "Pseudo :"
             ])
-            ->add("comment", TextareaType::class, [
+            ->add("content", TextareaType::class, [
                 "label" => "Votre message :"
             ])
         ;
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * @inheritDoc
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('data_class', Comment::class);
+        $resolver->setDefault("data_class", Comment::class);
     }
 }

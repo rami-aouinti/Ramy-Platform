@@ -18,21 +18,22 @@ class PostFixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        for ($i = 1; $i <= 50; $i++) {
+        for ($i = 1; $i <= 100; $i++) {
             $post = new Post();
-            $post->setTitle('Post n° '  . $i);
-            $post->setDescription('Description n°' . $i);
-            $post->setSlug('Slug n°' . $i);
+            $post->setTitle("Article N°" . $i);
+            $post->setContent("Contenu N°" . $i);
+            $post->setImage("http://via.placeholder.com/400x300");
             $manager->persist($post);
 
             for ($j = 1; $j <= rand(5, 15); $j++) {
                 $comment = new Comment();
-                $comment->setAuthor('Author :' . $i . $j);
-                $comment->setComment('Comment' . $i . $j);
+                $comment->setAuthor("Auteur " . $i);
+                $comment->setContent("Commentaire N°" . $j);
                 $comment->setPost($post);
                 $manager->persist($comment);
             }
         }
+
         $manager->flush();
     }
 }
