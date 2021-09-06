@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Domain\Blog\Controller;
+namespace App\Domain\Resume\Controller;
 
 use App\Infrastructure\Representation\RepresentationFactoryInterface;
-use App\Domain\Blog\Paginator\PostPaginator;
-use App\Domain\Blog\Presenter\ListingPostsPresenterInterface;
-use App\Domain\Blog\Responder\ListingPostsResponder;
+use App\Domain\Resume\Paginator\ResumePaginator;
+use App\Domain\Resume\Presenter\ListingPostsPresenterInterface;
+use App\Domain\Resume\Responder\ListingPostsResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,7 +22,7 @@ class Listing
         RepresentationFactoryInterface $representationFactory,
         ListingPostsPresenterInterface $presenter
     ): Response {
-        $representation = $representationFactory->create(PostPaginator::class)->handleRequest($request);
+        $representation = $representationFactory->create(ResumePaginator::class)->handleRequest($request);
 
         return $presenter->present(new ListingPostsResponder($representation->paginate()));
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Blog\Responder;
+namespace App\Domain\Resume\Responder;
 
 use App\Application\Entity\Post;
 use App\Infrastructure\Representation\RepresentationInterface;
@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormView;
 
 /**
  * Class ReadPostResponder
- * @package App\Domain\Blog\Responder
+ * @package App\Domain\Resume\Responder
  */
 class ReadPostResponder
 {

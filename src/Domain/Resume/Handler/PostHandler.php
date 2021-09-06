@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Domain\Blog\Handler;
+namespace App\Domain\Resume\Handler;
 
-use App\Domain\Blog\DataTransferObject\Post;
-use App\Domain\Blog\Form\ExperienceType;
+use App\Domain\Resume\DataTransferObject\Post;
+use App\Domain\Resume\Form\ExperienceType;
 use App\Infrastructure\Handler\AbstractHandler;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\UnitOfWork;
 
 /**
  * Class PostHandler
- * @package App\Domain\Blog\Handler
+ * @package App\Domain\Resume\Handler
  */
 class PostHandler extends AbstractHandler
 {

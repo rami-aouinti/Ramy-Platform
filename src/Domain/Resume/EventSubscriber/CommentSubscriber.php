@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Blog\EventSubscriber;
+namespace App\Domain\Resume\EventSubscriber;
 
 use App\Application\Entity\Comment;
 use App\Infrastructure\Event\ReverseEvent;
@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Security;
 
 /**
  * Class CommentSubscriber
- * @package App\Domain\Blog\EventSubscriber
+ * @package App\Domain\Resume\EventSubscriber
  */
 class CommentSubscriber implements EventSubscriberInterface
 {

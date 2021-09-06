@@ -1,15 +1,15 @@
-index:
-  path: /article
-  controller: App\Domain\Blog\Controller\Listing
+resume_index:
+  path: /resume
+  controller: App\Domain\Resume\Controller\Listing
 
-blog_read:
-  path: /{id}/read-article
-  controller: App\Domain\Blog\Controller\Read
+resume_read:
+  path: /{id}/read-resume
+  controller: App\Domain\Resume\Controller\Read
 
-blog_create:
-  path: /publish-article
-  controller: App\Domain\Blog\Controller\Create
+resume_create:
+  path: /publish-resume
+  controller: App\Domain\Resume\Controller\Create
 
-blog_update:
-  path: /{id}/update-article
-  controller: App\Domain\Blog\Controller\Update
+resume_update:
+  path: /{id}/update-resume
+  controller: App\Domain\Resume\Controller\Update

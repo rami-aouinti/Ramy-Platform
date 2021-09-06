@@ -1,51 +1,39 @@
 <?php
 
-namespace App\Domain\Blog\Form;
+namespace App\Domain\Resume\Form;
 
-use App\Domain\Blog\DataTransferObject\Comment;
+use App\Application\Entity\Formation;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Validator\Constraints\Image;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
- * Class FormationType
- * @package App\Domain\Blog\Form
+ * Class ExperienceType
+ * @package App\Domain\Resume\Form
  */
 class FormationType extends AbstractType
 {
-    /**
-     * @var AuthorizationCheckerInterface
-     */
-    private AuthorizationCheckerInterface $authorizationChecker;
-
-    /**
-     * FormationType constructor.
-     * @param AuthorizationCheckerInterface $authorizationChecker
-     */
-    public function __construct(AuthorizationCheckerInterface $authorizationChecker)
-    {
-        $this->authorizationChecker = $authorizationChecker;
-    }
-
     /**
      * @inheritDoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('title', TextType::class, [
+                "label" => "Titre :"
+            ])
             ->add("content", TextareaType::class, [
-                "label" => "Votre message :"
+                "label" => "Article :"
+            ])
+            ->add("image", FileType::class, [
+                "required" => false
             ])
         ;
-
-        if (!$this->authorizationChecker->isGranted("ROLE_USER")) {
-            $builder->add("author", TextType::class, [
-                "label" => "Pseudo :"
-            ]);
-        }
     }
 
     /**
@@ -53,6 +41,6 @@ class FormationType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault("data_class", Comment::class);
+        $resolver->setDefault("data_class", Formation::class);
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Blog\EventSubscriber;
+namespace App\Domain\Resume\EventSubscriber;
 
 use App\Application\Entity\Post;
 use App\Infrastructure\Event\ReverseEvent;
@@ -11,7 +11,7 @@ use Symfony\Component\Security\Core\Security;
 
 /**
  * Class PostSubscriber
- * @package App\Domain\Blog\EventSubscriber
+ * @package App\Domain\Resume\EventSubscriber
  */
 class PostSubscriber implements EventSubscriberInterface
 {

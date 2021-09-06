@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Blog\Presenter;
+namespace App\Domain\Resume\Presenter;
 
-use App\Domain\Blog\Responder\ReadPostResponder;
-use App\Domain\Blog\Responder\RedirectReadPostResponder;
+use App\Domain\Resume\Responder\ReadPostResponder;
+use App\Domain\Resume\Responder\RedirectReadPostResponder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -11,7 +11,7 @@ use Twig\Environment;
 
 /**
  * Class ReadPostPresenter
- * @package App\Domain\Blog\Presenter
+ * @package App\Domain\Resume\Presenter
  */
 class ReadPostPresenter implements ReadPostPresenterInterface
 {
@@ -42,7 +42,7 @@ class ReadPostPresenter implements ReadPostPresenterInterface
     public function redirect(RedirectReadPostResponder $responder): RedirectResponse
     {
         return new RedirectResponse($this->urlGenerator->generate(
-            "blog_read",
+            "Resume_read",
             ["id" => $responder->getPost()->getId()]
         ));
     }
@@ -52,7 +52,7 @@ class ReadPostPresenter implements ReadPostPresenterInterface
      */
     public function present(ReadPostResponder $responder): Response
     {
-        return new Response($this->twig->render("blog/read.html.twig", [
+        return new Response($this->twig->render("Resume/read.html.twig", [
             "post" => $responder->getPost(),
             "form" => $responder->getForm(),
             "representation" => $responder->getRepresentation()

@@ -1,16 +1,16 @@
 <?php
 
 
-namespace App\Domain\Blog\Controller;
+namespace App\Domain\Resume\Controller;
 
 
 use App\Application\Entity\Post;
 use App\Application\Security\Voter\PostVoter;
-use App\Domain\Blog\Handler\PostHandler;
+use App\Domain\Resume\Handler\PostHandler;
 use App\Infrastructure\Controller\AuthorizationTrait;
-use App\Domain\Blog\Presenter\UpdatePostPresenterInterface;
-use App\Domain\Blog\Responder\RedirectUpdatePostResponder;
-use App\Domain\Blog\Responder\UpdatePostResponder;
+use App\Domain\Resume\Presenter\UpdatePostPresenterInterface;
+use App\Domain\Resume\Responder\RedirectUpdatePostResponder;
+use App\Domain\Resume\Responder\UpdatePostResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

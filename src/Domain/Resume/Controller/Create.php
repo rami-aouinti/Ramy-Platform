@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Blog\Controller;
+namespace App\Domain\Resume\Controller;
 
 use App\Application\Entity\Post;
-use App\Domain\Blog\Handler\PostHandler;
+use App\Domain\Resume\Handler\PostHandler;
 use App\Infrastructure\Controller\AuthorizationTrait;
-use App\Domain\Blog\Presenter\CreatePostPresenterInterface;
-use App\Domain\Blog\Responder\CreatePostResponder;
-use App\Domain\Blog\Responder\RedirectCreatePostResponder;
+use App\Domain\Resume\Presenter\CreatePostPresenterInterface;
+use App\Domain\Resume\Responder\CreatePostResponder;
+use App\Domain\Resume\Responder\RedirectCreatePostResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

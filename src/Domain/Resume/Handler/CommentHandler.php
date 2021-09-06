@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Domain\Blog\Handler;
+namespace App\Domain\Resume\Handler;
 
-use App\Domain\Blog\DataTransferObject\Comment;
-use App\Domain\Blog\Form\FormationType;
+use App\Domain\Resume\DataTransferObject\Comment;
+use App\Domain\Resume\Form\FormationType;
 use App\Infrastructure\Handler\AbstractHandler;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * Class CommentHandler
- * @package App\Domain\Blog\Handler
+ * @package App\Domain\Resume\Handler
  */
 class CommentHandler extends AbstractHandler
 {

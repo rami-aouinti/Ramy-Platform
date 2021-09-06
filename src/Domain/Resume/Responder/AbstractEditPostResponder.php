@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Domain\Blog\Responder;
+namespace App\Domain\Resume\Responder;
 
 use Symfony\Component\Form\FormView;
 
 /**
  * Class AbstractEditPostResponder
- * @package App\Domain\Blog\Responder
+ * @package App\Domain\Resume\Responder
  */
 abstract class AbstractEditPostResponder
 {

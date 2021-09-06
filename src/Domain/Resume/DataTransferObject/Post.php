@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Domain\Blog\DataTransferObject;
+namespace App\Domain\Resume\DataTransferObject;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Post
- * @package App\Domain\Blog\DataTransferObject
+ * @package App\Domain\Resume\DataTransferObject
  */
 class Post
 {

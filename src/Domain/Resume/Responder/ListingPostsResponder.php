@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Domain\Blog\Responder;
+namespace App\Domain\Resume\Responder;
 
 use App\Infrastructure\Representation\RepresentationInterface;
 
 /**
  * Class ListingPostsResponder
- * @package App\Domain\Blog\Responder
+ * @package App\Domain\Resume\Responder
  */
 class ListingPostsResponder
 {

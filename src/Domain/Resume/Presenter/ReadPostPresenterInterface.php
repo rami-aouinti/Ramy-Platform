@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Domain\Blog\Presenter;
+namespace App\Domain\Resume\Presenter;
 
-use App\Domain\Blog\Responder\ReadPostResponder;
-use App\Domain\Blog\Responder\RedirectReadPostResponder;
+use App\Domain\Resume\Responder\ReadPostResponder;
+use App\Domain\Resume\Responder\RedirectReadPostResponder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Interface ReadPostPresenterInterface
- * @package App\Domain\Blog\Presenter
+ * @package App\Domain\Resume\Presenter
  */
 interface ReadPostPresenterInterface
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Blog\Presenter;
+namespace App\Domain\Resume\Presenter;
 
 /**
  * Class UpdatePostPresenter
- * @package App\Domain\Blog\Presenter
+ * @package App\Domain\Resume\Presenter
  */
 class UpdatePostPresenter extends AbstractEditPostPresenter implements UpdatePostPresenterInterface
 {
@@ -13,6 +13,6 @@ class UpdatePostPresenter extends AbstractEditPostPresenter implements UpdatePos
      */
     protected function getView(): string
     {
-        return "blog/create.html.twig";
+        return "Resume/create.html.twig";
     }
 }

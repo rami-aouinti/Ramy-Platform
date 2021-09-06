@@ -8,7 +8,7 @@ use App\Infrastructure\Representation\RepresentationBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class PostPaginator
+ * Class ResumePaginator
  * @package App\Domain\Blog\Paginator
  */
 class PostPaginator extends AbstractPaginator
@@ -19,7 +19,7 @@ class PostPaginator extends AbstractPaginator
     private PostRepository $postRepository;
 
     /**
-     * PostPaginator constructor.
+     * ResumePaginator constructor.
      * @param PostRepository $postRepository
      */
     public function __construct(PostRepository $postRepository)

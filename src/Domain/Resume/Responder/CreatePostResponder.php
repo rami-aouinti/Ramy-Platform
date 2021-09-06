@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Blog\Responder;
+namespace App\Domain\Resume\Responder;
 
 /**
  * Class CreatePostResponder
- * @package App\Domain\Blog\Responder
+ * @package App\Domain\Resume\Responder
  */
 class CreatePostResponder extends AbstractEditPostResponder
 {

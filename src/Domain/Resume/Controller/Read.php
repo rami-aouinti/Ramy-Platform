@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Domain\Blog\Controller;
+namespace App\Domain\Resume\Controller;
 
 use App\Application\Entity\Comment;
 use App\Application\Entity\Post;
-use App\Domain\Blog\Handler\CommentHandler;
+use App\Domain\Resume\Handler\CommentHandler;
 use App\Infrastructure\Controller\AuthorizationTrait;
 use App\Infrastructure\Representation\RepresentationFactoryInterface;
-use App\Domain\Blog\Paginator\CommentPaginator;
-use App\Domain\Blog\Presenter\ReadPostPresenterInterface;
-use App\Domain\Blog\Responder\ReadPostResponder;
-use App\Domain\Blog\Responder\RedirectReadPostResponder;
+use App\Domain\Resume\Paginator\CommentPaginator;
+use App\Domain\Resume\Presenter\ReadPostPresenterInterface;
+use App\Domain\Resume\Responder\ReadPostResponder;
+use App\Domain\Resume\Responder\RedirectReadPostResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 

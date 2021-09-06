@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Domain\Blog\DataTransferObject;
+namespace App\Domain\Resume\DataTransferObject;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class Comment
- * @package App\Domain\Blog\DataTransferObject
+ * @package App\Domain\Resume\DataTransferObject
  */
 class Comment
 {

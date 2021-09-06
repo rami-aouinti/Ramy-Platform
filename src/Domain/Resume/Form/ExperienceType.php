@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Domain\Blog\Form;
+namespace App\Domain\Resume\Form;
 
-use App\Domain\Blog\DataTransferObject\Post;
+use App\Application\Entity\Experience;
+use App\Domain\Resume\DataTransferObject\Post;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -14,7 +15,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
 
 /**
  * Class ExperienceType
- * @package App\Domain\Blog\Form
+ * @package App\Domain\Resume\Form
  */
 class ExperienceType extends AbstractType
 {
@@ -41,6 +42,6 @@ class ExperienceType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault("data_class", Post::class);
+        $resolver->setDefault("data_class", Experience::class);
     }
 }

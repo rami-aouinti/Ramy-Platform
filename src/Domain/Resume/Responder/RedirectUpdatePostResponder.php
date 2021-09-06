@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Blog\Responder;
+namespace App\Domain\Resume\Responder;
 
 /**
  * Class RedirectUpdatePostResponder
- * @package App\Domain\Blog\Responder
+ * @package App\Domain\Resume\Responder
  */
 class RedirectUpdatePostResponder extends AbstractRedirectPostResponder
 {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Domain\Blog\Presenter;
+namespace App\Domain\Resume\Presenter;
 
 /**
  * Interface UpdatePostPresenterInterface
- * @package App\Domain\Blog\Presenter
+ * @package App\Domain\Resume\Presenter
  */
 interface UpdatePostPresenterInterface extends EditPostPresenterInterface
 {

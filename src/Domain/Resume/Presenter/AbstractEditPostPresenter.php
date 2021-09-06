@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Blog\Presenter;
+namespace App\Domain\Resume\Presenter;
 
-use App\Domain\Blog\Responder\AbstractEditPostResponder;
-use App\Domain\Blog\Responder\AbstractRedirectPostResponder;
+use App\Domain\Resume\Responder\AbstractEditPostResponder;
+use App\Domain\Resume\Responder\AbstractRedirectPostResponder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -11,7 +11,7 @@ use Twig\Environment;
 
 /**
  * Class AbstractEditPostPresenter
- * @package App\Domain\Blog\Presenter
+ * @package App\Domain\Resume\Presenter
  */
 abstract class AbstractEditPostPresenter implements EditPostPresenterInterface
 {
@@ -47,7 +47,7 @@ abstract class AbstractEditPostPresenter implements EditPostPresenterInterface
     public function redirect(AbstractRedirectPostResponder $responder): RedirectResponse
     {
         return new RedirectResponse($this->urlGenerator->generate(
-            "blog_read",
+            "Resume_read",
             ["id" => $responder->getPost()->getId()]
         ));
     }
