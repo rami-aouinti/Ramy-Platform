@@ -2,37 +2,69 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\CommentRepository")
  */
 class Comment
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @var int|null
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private ?int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @ORM\Column(nullable=true)
+     * @Assert\NotBlank(groups={"anonymous"})
+     * @Assert\Length(min=2, groups={"anonymous"})
      */
-    private ?string $author;
+    private ?string $author = null;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string
+     * @ORM\Column(type="text")
+     * @Assert\NotBlank()
+     * @Assert\Length(min=5)
      */
-    private ?string $comment;
+    private ?string $content = null;
+
+    /**
+     * @var DateTimeImmutable
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private DateTimeImmutable $postedAt;
 
     /**
      * @var Post
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
      */
-    private $post;
+    private Post $post;
 
+    /**
+     * @var null|User
+     * @ORM\ManyToOne(targetEntity="User")
+     */
+    private ?User $user = null;
+
+    /**
+     * Comment constructor.
+     * @throws \Exception
+     */
+    public function __construct()
+    {
+        $this->postedAt = new DateTimeImmutable();
+    }
+
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->id;
@@ -54,16 +86,52 @@ class Comment
         $this->author = $author;
     }
 
-    public function getComment(): ?string
+    /**
+     * @return User|null
+     */
+    public function getUser(): ?User
     {
-        return $this->comment;
+        return $this->user;
     }
 
-    public function setComment(string $comment): self
+    /**
+     * @param User|null $user
+     */
+    public function setUser(?User $user): void
     {
-        $this->comment = $comment;
+        $this->user = $user;
+    }
 
-        return $this;
+    /**
+     * @return string|null
+     */
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent(string $content): void
+    {
+        $this->content = $content;
+    }
+
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getPostedAt(): DateTimeImmutable
+    {
+        return $this->postedAt;
+    }
+
+    /**
+     * @param DateTimeImmutable $postedAt
+     */
+    public function setPostedAt(DateTimeImmutable $postedAt): void
+    {
+        $this->postedAt = $postedAt;
     }
 
     /**

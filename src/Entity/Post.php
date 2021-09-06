@@ -2,39 +2,57 @@
 
 namespace App\Entity;
 
-use App\Repository\PostRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
-use PhpParser\ErrorHandler\Collecting;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\PostRepository")
  */
 class Post
 {
     /**
-     * @ORM\Id
-     * @ORM\GeneratedValue
+     * @var int|null
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
     private ?int $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string|null
+     * @ORM\Column
+     * @Assert\NotBlank
      */
-    private ?string $title;
+    private ?string $title = null;
 
     /**
+     * @var DateTimeImmutable
+     * @ORM\Column(type="datetime_immutable")
+     */
+    private DateTimeImmutable $publishedAt;
+
+    /**
+     * @var string|null
+     * @ORM\Column
+     */
+    private ?string $image = null;
+
+    /**
+     * @var string|null
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(min=10)
      */
-    private ?string $description;
+    private ?string $content = null;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var User
+     * @ORM\ManyToOne(targetEntity="User")
      */
-    private ?string $slug;
+    private User $user;
 
     /**
      * @var Collection
@@ -43,10 +61,12 @@ class Post
     private Collection $comments;
 
     /**
-     * Post Constructor
+     * Post constructor.
+     * @throws \Exception
      */
-    #[Pure] public function __construct()
+    public function __construct()
     {
+        $this->publishedAt = new DateTimeImmutable();
         $this->comments = new ArrayCollection();
     }
 
@@ -68,48 +88,74 @@ class Post
 
     /**
      * @param string $title
-     * @return $this
      */
-    public function setTitle(string $title): self
+    public function setTitle(string $title): void
     {
         $this->title = $title;
+    }
 
-        return $this;
+    /**
+     * @return DateTimeImmutable
+     */
+    public function getPublishedAt(): DateTimeImmutable
+    {
+        return $this->publishedAt;
+    }
+
+    /**
+     * @param DateTimeImmutable $publishedAt
+     */
+    public function setPublishedAt(DateTimeImmutable $publishedAt): void
+    {
+        $this->publishedAt = $publishedAt;
     }
 
     /**
      * @return string|null
      */
-    public function getDescription(): ?string
+    public function getImage(): ?string
     {
-        return $this->description;
+        return $this->image;
     }
 
     /**
-     * @param string $description
-     * @return $this
+     * @param string|null $image
      */
-    public function setDescription(string $description): self
+    public function setImage(?string $image): void
     {
-        $this->description = $description;
-
-        return $this;
+        $this->image = $image;
     }
 
     /**
      * @return string|null
      */
-    public function getSlug(): ?string
+    public function getContent(): ?string
     {
-        return $this->slug;
+        return $this->content;
     }
 
     /**
-     * @param string|null $slug
+     * @param string $content
      */
-    public function setSlug(?string $slug): void
+    public function setContent(string $content): void
     {
-        $this->slug = $slug;
+        $this->content = $content;
+    }
+
+    /**
+     * @return User
+     */
+    public function getUser(): User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser(User $user): void
+    {
+        $this->user = $user;
     }
 
     /**

@@ -7,34 +7,43 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class Comment Type
+ * Class CommentType
+ * @package App\Form
  */
 class CommentType extends AbstractType
 {
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
+     * @inheritDoc
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add("author", TextType::class, [
-                "label" => "Pseudo :"
-            ])
-            ->add("comment", TextareaType::class, [
+            ->add("content", TextareaType::class, [
                 "label" => "Votre message :"
             ])
         ;
+
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            if ($event->getData()->getUser() !== null) {
+                return;
+            }
+
+            $event->getForm()->add("author", TextType::class, [
+                "label" => "Pseudo :"
+            ]);
+        });
     }
 
     /**
-     * @param OptionsResolver $resolver
+     * @inheritDoc
      */
     public function configureOptions(OptionsResolver $resolver)
     {
-        $resolver->setDefault('data_class', Comment::class);
+        $resolver->setDefault("data_class", Comment::class);
     }
 }
