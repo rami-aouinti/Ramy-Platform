@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>{{post.title}}</h1>
+    <small>{{ post.publishedAt|date("d/m/Y") }}</small>
+    <img src="{{ asset(post.image) }}" alt="{{ post.title }}">
+    <p>{{ post.content }}</p>
+    {{ form_start(form) }}
+        {% if form.author is defined %}
+            {{ form_row(form.author) }}
+        {% endif %}
+        {{ form_row(form.content) }}
+        <button type="submit">Envoyer</button>
+    {{ form_end(form) }}
+
+    <ul>
+        {% for comment in representation %}
+            <li>{{ comment.user is not null ? comment.user.pseudo : comment.author }} - {{ comment.postedAt|date("d/m/Y H:i:s") }} : {{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="col-12 mt-4 d-flex justify-content-between">
+        <span>Show articles from {{ representation.firstResult }} to {{ representation.lastResult }} in {{ representation.count }}</span>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if representation.page > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(1) }}">First page</a></li>
+                {% endif %}
+                {% if representation.page > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.page - 1) }}"> < </a></li>
+                {% endif %}
+                {% for p in representation.range %}
+                    <li class="page-item {{ representation.page == p  ? "active" : "" }}"><a class="page-link" href="{{ representation|path(p) }}">{{ p }}</a></li>
+                {% endfor %}
+                {% if representation.page < representation.pages %}
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.page + 1) }}"> > </a></li>
+                {% endif %}
+                {% if representation.page < representation.pages %}
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.pages) }}">Last page</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

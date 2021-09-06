@@ -16,7 +16,7 @@ use Symfony\Component\Validator\Constraints\NotNull;
  * Class ExperienceType
  * @package App\Domain\Blog\Form
  */
-class PostType extends AbstractType
+class ExperienceType extends AbstractType
 {
     /**
      * @inheritDoc

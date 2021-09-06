@@ -1,0 +1,7 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Add new Post</h1>
+
+    {% include 'blog/_form.html.twig' with { form: form, buttonName: 'publish' } %}
+{% endblock %}

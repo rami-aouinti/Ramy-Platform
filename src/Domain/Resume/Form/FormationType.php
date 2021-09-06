@@ -14,7 +14,7 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
  * Class FormationType
  * @package App\Domain\Blog\Form
  */
-class CommentType extends AbstractType
+class FormationType extends AbstractType
 {
     /**
      * @var AuthorizationCheckerInterface
