@@ -20,23 +20,23 @@
     </ul>
 
     <div class="col-12 mt-4 d-flex justify-content-between">
-        <span>Affiche les articles de {{ representation.firstResult }} à {{ representation.lastResult }} sur {{ representation.count }}</span>
+        <span>Show articles from {{ representation.firstResult }} to {{ representation.lastResult }} in {{ representation.count }}</span>
         <nav aria-label="Page navigation example">
             <ul class="pagination">
                 {% if representation.page > 1 %}
-                    <li class="page-item"><a class="page-link" href="{{ representation|path(1) }}">Première page</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(1) }}">First page</a></li>
                 {% endif %}
                 {% if representation.page > 1 %}
-                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.page - 1) }}">Précédent</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.page - 1) }}"> < </a></li>
                 {% endif %}
                 {% for p in representation.range %}
                     <li class="page-item {{ representation.page == p  ? "active" : "" }}"><a class="page-link" href="{{ representation|path(p) }}">{{ p }}</a></li>
                 {% endfor %}
                 {% if representation.page < representation.pages %}
-                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.page + 1) }}">Suivant</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.page + 1) }}"> > </a></li>
                 {% endif %}
                 {% if representation.page < representation.pages %}
-                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.pages) }}">Dernière page</a></li>
+                    <li class="page-item"><a class="page-link" href="{{ representation|path(representation.pages) }}">Last page</a></li>
                 {% endif %}
             </ul>
         </nav>
